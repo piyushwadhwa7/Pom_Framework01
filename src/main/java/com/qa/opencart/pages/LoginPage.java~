@@ -40,7 +40,7 @@ public class LoginPage {
         ElementUtil elementUtil = new ElementUtil(driver);
         driver.findElement(emailId).sendKeys(un);
         driver.findElement(password).sendKeys(pwd);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         elementUtil.waitForElementVisible(loginBtn, 60);
         elementUtil.clickWhenReady(loginBtn, 60);
         String title = driver.getTitle();
