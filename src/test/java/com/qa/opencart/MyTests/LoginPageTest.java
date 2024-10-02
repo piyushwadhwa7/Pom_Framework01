@@ -1,4 +1,6 @@
 package com.qa.opencart.MyTests;
 
-public class LoginPageTest {
+import com.qa.opencart.base.BaseTests;
+
+public class LoginPageTest extends BaseTests {
 }
