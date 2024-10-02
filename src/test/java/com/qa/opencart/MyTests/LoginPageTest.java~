@@ -10,7 +10,7 @@ public class LoginPageTest extends BaseTests {
     @Test(priority = 1)
     public void LoginPageTitileTest() {
         String actualTitle = loginPage.getLoginPageTitle();
-        Assert.assertEquals(actualTitle, AppConstants.LOGIN_PAGE_TITLE, AppError.TITLE_NOT_FOUND);
+        Assert.assertEquals(actualTitle, AppConstants.ACCOUNT_PAGE_TITLE, AppError.TITLE_NOT_FOUND);
 
     }
     @Test(priority = 2)
