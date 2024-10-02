@@ -8,8 +8,4 @@ public class DriverManager {
     public void intiDriver(String browserName) {
         //cross browser logic
     }
-
-    public void initProp() {
-        //cross prop logic
-    }
 }
