@@ -9,7 +9,5 @@ public class AppError {
 
     public static final String ELEMENT_NOT_FOUND = "=======ELEMENT NOT FOUDN========";
 
-    public static final String HEADERS_NOT_FOUND = "=======HEADERS NOT FOUDN========";
-
-
+    
 }
