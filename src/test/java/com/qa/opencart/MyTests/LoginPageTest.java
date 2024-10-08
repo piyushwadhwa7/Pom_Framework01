@@ -28,7 +28,7 @@ public class LoginPageTest extends BaseTests {
 
     @Test(priority = 4)
     public void LoginTest() throws InterruptedException {
-        String accounttitle = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
-        Assert.assertEquals(accounttitle, AppConstants.ACCOUNT_PAGE_TITLE, AppError.TITLE_NOT_FOUND);
+        accountsPage=loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+        Assert.assertEquals(accountsPage.getAccountsPageTitle(), AppConstants.ACCOUNTS_PAGE_TITLE, AppError.TITLE_NOT_FOUND);
     }
 }

@@ -1,11 +1,14 @@
 package com.qa.opencart.pages;
 
+import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
+import com.qa.opencart.utils.TimeUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
     private WebDriver driver;
+    private ElementUtil eleUtil;
     //1.Page object : By locator startegy and all should be private in nature
     private By emailId = By.id("input-email");
     private By password = By.id("input-password");
@@ -15,16 +18,17 @@ public class LoginPage {
     //2. public constructor.. of the page
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        eleUtil = new ElementUtil(driver);
     }
 
     //3. page actions
     public String getLoginPageTitle() {
-        String title = driver.getTitle();
+        String title = eleUtil.waitForTitleToBe(AppConstants.LOGIN_PAGE_TITLE, TimeUtil.DEFAULT_TIME_OUT);
         System.out.println("Login page title is : " + title);
         return title;
     }
     public String getLoginPageUrl() {
-        String Url = driver.getCurrentUrl();
+        String Url = eleUtil.waitForURLContains(AppConstants.LOGIN_PAGE_FRACTION_URL, TimeUtil.DEFAULT_TIME_OUT);
         System.out.println("Login page url is : " + Url);
         return Url;
     }
@@ -34,17 +38,16 @@ public class LoginPage {
         return flag;
     }
     public boolean isLoginPageDisplayed() {
-        return driver.findElement(emailId).isDisplayed();
+       return eleUtil.doIsDisplayed(forgottenPassword);
+
     }
-    public String doLogin(String un, String pwd) throws InterruptedException {
-        ElementUtil elementUtil = new ElementUtil(driver);
-        driver.findElement(emailId).sendKeys(un);
-        driver.findElement(password).sendKeys(pwd);
+    public AccountsPage doLogin(String un, String pwd) throws InterruptedException {
+        eleUtil.doSendKeys(emailId, un, TimeUtil.MEDIUM_TIME_OUT);
+        eleUtil.doSendKeys(password, pwd, TimeUtil.MEDIUM_TIME_OUT);
         Thread.sleep(1000);
-        elementUtil.waitForElementVisible(loginBtn, 60);
-        elementUtil.clickWhenReady(loginBtn, 60);
-        String title = driver.getTitle();
-        System.out.println("Account  page title is : " + title);
-        return title;
+        eleUtil.doClick(loginBtn);
+        return  new AccountsPage(driver);// Test data driven approch and also object is already created here
+        // This is also termed as page chaining concept
+
     }
 }

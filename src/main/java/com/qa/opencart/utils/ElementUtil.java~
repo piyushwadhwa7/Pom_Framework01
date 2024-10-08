@@ -327,22 +327,7 @@ public class ElementUtil {
      * @param timeOut
      * @return
      */
-    public List<WebElement> waitForElementsPresence(By locator, int timeOut) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-
-    }
-
-    /**
-     * This method will wait for all the elements to be present on the page for the given timeOut.
-     * It will poll the elements every intervalTime seconds to check if the elements are present.
-     * If the elements are present, it will return the list of elements.
-     * If the elements are not present after the given timeOut, it will throw an exception
-     * @param locator : By locator of the elements
-     * @param timeOut : in seconds
-     * @return List<WebElement>
-     */
-    public List<WebElement> waitForVisiblityOfElementsLocated(By locator, int timeOut) {
+    public List<WebElement> waitForElementPresence(By locator, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 
