@@ -5,6 +5,7 @@ import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.errors.AppError;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -32,5 +33,21 @@ public class AccountsPageTest extends BaseTests {
         List<String> actualHeaders = accountsPage.getAccountsPageHeaders();
         Assert.assertEquals(actualHeaders, AppConstants.ACCOUNTS_PAGE_HEADERS_LIST, AppError.HEADERS_NOT_FOUND);
     }}
+
+    @DataProvider
+    public Object[][] getSearchData() {
+        return new Object[][]{
+                {"MacBook", 3},
+                {"iMac", 1},
+                {"Samsung", 2},
+                {"airtel", 0}
+        };
+    }
+
+    @Test(dataProvider = "getSearchData")
+    public void searchTest(String searchKey, int resultcount) throws InterruptedException {
+        searchResPage=accountsPage.doSearch(searchKey);
+        Assert.assertEquals(searchResPage.getSearchResultCount(), resultcount, AppError.Results_COUNT_MISMATCHED);
+    }
 
 }
