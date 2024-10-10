@@ -31,15 +31,18 @@ public class ElementUtil {
      */
     public void doSendKeys(By locator, String value) {
         nullCheck(value);
+        getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
 
     public void doSendKeys(By locator, String value, int timeOut) {
         nullCheck(value);
+        waitForElementVisible(locator, timeOut).clear();
         waitForElementVisible(locator, timeOut).sendKeys(value);
     }
 
     public void doSendKeys(By locator, CharSequence... value) {
+        getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
 
@@ -327,9 +330,28 @@ public class ElementUtil {
      * @param timeOut
      * @return
      */
-    public List<WebElement> waitForElementPresence(By locator, int timeOut) {
+    public List<WebElement> waitForElementsPresence(By locator, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+
+    }
+
+    /**
+     * This method will wait for all the elements to be present on the page for the given timeOut.
+     * It will poll the elements every intervalTime seconds to check if the elements are present.
+     * If the elements are present, it will return the list of elements.
+     * If the elements are not present after the given timeOut, it will throw an exception
+     * @param locator : By locator of the elements
+     * @param timeOut : in seconds
+     * @return List<WebElement>
+     */
+    public List<WebElement> waitForVisiblityOfElementsLocated(By locator, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        try {
+            return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        }catch (Exception e) {
+            return List.of();// return empty array list if element is not found
+        }
 
     }
     /**

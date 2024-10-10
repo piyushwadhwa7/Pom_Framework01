@@ -2,6 +2,8 @@ package com.qa.opencart.base;
 import com.qa.opencart.factory.DriverManager;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.LoginPage;
+import com.qa.opencart.pages.ProductInfoPage;
+import com.qa.opencart.pages.SearchResultPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -14,6 +16,8 @@ public class BaseTests {
     protected Properties prop;
     protected LoginPage loginPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
     protected AccountsPage accountsPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
+    protected SearchResultPage searchResPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
+    protected ProductInfoPage productInfoPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
     @BeforeTest
     public void setup() {
         df = new DriverManager();

@@ -11,5 +11,11 @@ public class AppError {
 
     public static final String HEADERS_NOT_FOUND = "=======HEADERS NOT FOUDN========";
 
+    public static final String Results_COUNT_MISMATCHED = "=======RESULTS COUNT MISMATCHED========";
+
+    public static final String HEADER_NOT_FOUND = "=======HEADER NOT FOUDN========";
+
+    public static final String IMAGE_COUNT_MISMATCHED = "=======IMAGE NOT FOUDN========";
+
 
 }

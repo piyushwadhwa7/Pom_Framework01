@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ElementUtil {
@@ -31,15 +32,18 @@ public class ElementUtil {
      */
     public void doSendKeys(By locator, String value) {
         nullCheck(value);
+        getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
 
     public void doSendKeys(By locator, String value, int timeOut) {
         nullCheck(value);
+        waitForElementVisible(locator, timeOut).clear();
         waitForElementVisible(locator, timeOut).sendKeys(value);
     }
 
     public void doSendKeys(By locator, CharSequence... value) {
+        getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
 
@@ -344,7 +348,11 @@ public class ElementUtil {
      */
     public List<WebElement> waitForVisiblityOfElementsLocated(By locator, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        try {
+            return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        }catch (Exception e) {
+            return Arrays.asList(new WebElement[0]);// return empty array list if element is not found
+        }
 
     }
     /**

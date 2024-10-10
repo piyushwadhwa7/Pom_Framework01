@@ -18,7 +18,7 @@ public class AccountsPage {
 
     private By logout = By.linkText("Logout");
     private By headers= By.cssSelector("div#content h2");
-    private By search= By.name("search");
+    private By search= By.xpath("//input[@name='search']");
     private By seachIcon= By.cssSelector("div#search button");
 
     //2. public constructor.. of the page
@@ -57,9 +57,9 @@ public class AccountsPage {
     public boolean isSearchExists() {
         return eleUtil.doIsDisplayed(search);
     }
-    public SearchResultPage doSearch(String searchKey) {
+    public SearchResultPage doSearch(String searchKey) throws InterruptedException {
         System.out.println("Searching for : " + searchKey);
-        if (!isSearchExists()) {
+        if (isSearchExists()) {
             eleUtil.doSendKeys(search, searchKey, TimeUtil.MEDIUM_TIME_OUT);
             eleUtil.doClick(seachIcon);
         return new SearchResultPage(driver);
