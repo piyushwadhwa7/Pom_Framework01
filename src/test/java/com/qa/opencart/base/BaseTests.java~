@@ -24,12 +24,10 @@ public class BaseTests {
 
     @Parameters("browser")
     @BeforeTest
-    public void setup(String browserName) {
+    public void setup(String browser) {
         df = new DriverManager();
         prop=df.initProp();
-        if(browserName!=null){
-            prop.setProperty("browser", browserName);
-        }
+        if(browserName)
         driver=df.intiDriver(prop);
         loginPage = new LoginPage(driver);
         softAssert = new SoftAssert();

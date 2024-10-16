@@ -5,6 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import java.util.Map;
 
 public class ProductInfoPageTest extends BaseTests {
     /**
@@ -51,5 +54,23 @@ public class ProductInfoPageTest extends BaseTests {
         productInfoPage=searchResPage.selectProduct(productName);
         Assert.assertEquals(productInfoPage.getImagesCount(), imgCount, AppError.IMAGE_COUNT_MISMATCHED);
     }
+
+    @Test
+    public void productInfoTest() throws InterruptedException {
+        searchResPage =accountsPage.doSearch("MacBook");
+        productInfoPage=searchResPage.selectProduct("MacBook Pro");
+        Map<String , String> productInfoMap=productInfoPage.getProductInfoMap();
+        System.out.println(" ============Product Information===========");
+        System.out.println(productInfoMap);
+        softAssert.assertEquals(productInfoMap.get("productname"), "MacBook Pro");
+        softAssert.assertEquals(productInfoMap.get("Brand"), "Apple");
+        softAssert.assertEquals(productInfoMap.get("Product Code"), "Product 18");
+        softAssert.assertEquals(productInfoMap.get("Reward Points"), "800");
+        softAssert.assertEquals(productInfoMap.get("productPrice"), "$2,000.00");
+        softAssert.assertEquals(productInfoMap.get("extTraprice"), "$2,000.00");
+        softAssert.assertAll();// Failure--information
+    }
+    // Hard assertion and soft assertion
+    // Assert is hard assertion and soft is soft assertion
 
 }
