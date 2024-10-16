@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Opencart App Test Sanity suit" verbose="4" parallel="tests" thread-count="3" >
+    // Block number 1
+    <test name="Login Page Test">
+        <parameter name="browser" value="chrome" />//This is environment data ( Always use DataProviders
+<!--        <parameter name="url" value="https://www.jiocinema.com/" />-->
+        <classes>
+            <class name="com.qa.opencart.MyTests.LoginPageTest" />
+        </classes>
+    </test>
+
+
+    // Block number 2
+    <test name="Account Page Test">
+        <parameter name="browser" value="firefox" />
+<!--        <parameter name="url"-->
+<!--                   value="https://naveenautomationlabs.com/opencart/index.php?route=account/login" />-->
+        <classes>
+            <class name="com.qa.opencart.MyTests.AccountsPageTest" />
+        </classes>
+
+    </test>
+
+
+    //  Block number 3
+    <test name="ProductInfoPage Test">
+        <parameter name="browser" value="edge" />
+<!--        <parameter name="url"-->
+<!--                   value="https://www.freecodecamp.org/news/api-testing-with-postman-a-step-by-step-guide-using-the-spotify-api/" />-->
+        <classes>
+            <class name="com.qa.opencart.MyTests.ProductInfoPageTest" />
+        </classes>
+    </test>
+
+</suite>
