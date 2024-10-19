@@ -52,8 +52,7 @@ public class LoginPage {
 
     }
 
-    public RegistrationPage navigateToResgistrationPage() {
-        eleUtil.doClick(registerBtn, TimeUtil.MEDIUM_TIME_OUT);
-        return new RegistrationPage(driver);
+    public void navigateToResgistrationPage() {
+        eleUtil.doClick(forgottenPassword);
     }
 }

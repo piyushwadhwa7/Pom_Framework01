@@ -18,4 +18,6 @@ public class AppConstants {
     public static final String CONFIG_FILE_PATH = "./src/test/resources/config/config.properties";
 
     public static final List<String> ACCOUNTS_PAGE_HEADERS_LIST = Arrays.asList("My Account", "My Orders", "My Affiliate Account", "Newsletter");
+
+    public static final String USER_REGITRATION_SUCCESS_MASSAGE = "Your Account Has Been Created!";
 }
