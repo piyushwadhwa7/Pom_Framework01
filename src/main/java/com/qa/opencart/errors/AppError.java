@@ -16,6 +16,7 @@ public class AppError {
     public static final String HEADER_NOT_FOUND = "=======HEADER NOT FOUDN========";
 
     public static final String IMAGE_COUNT_MISMATCHED = "=======IMAGE NOT FOUDN========";
+    public static final String REGISTRATION_FAILED = "=======REGISTRATION FAILED========";
 
 
 }

@@ -34,4 +34,12 @@
         </classes>
     </test>
 
+    <test name="Registration Page Test">
+        <parameter name="browser" value="chrome" />//This is environment data ( Always use DataProviders
+        <!--        <parameter name="url" value="https://www.jiocinema.com/" />-->
+        <classes>
+            <class name="com.qa.opencart.MyTests.RegistrationPageTest" />
+        </classes>
+    </test>
+
 </suite>
