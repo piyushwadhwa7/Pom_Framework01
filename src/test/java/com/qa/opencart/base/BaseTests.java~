@@ -20,7 +20,7 @@ public class BaseTests {
     protected SoftAssert softAssert;// This is excess modfier where we can use the child methods in another classes which have inherited it
     protected RegistrationPage regPage;
 
-    @Parameters({"browser"})
+    @Parameters("browser")
     @BeforeTest
     public void setup(String browserName) {
         df = new DriverManager();

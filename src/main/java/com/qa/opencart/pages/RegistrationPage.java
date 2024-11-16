@@ -33,7 +33,7 @@ public class RegistrationPage{
 
 
     public boolean userRegistration(String firstName, String lastName, String email, String telephone, String password, String subscribe) throws InterruptedException {
-        eleUtil.doSendKeys(this.firstName, firstName, TimeUtil.MEDIUM_TIME_OUT);
+        eleUtil.doSendKeys(this.firstName, firstName, TimeUtil.MEDIUM_TIME_OUT); 
         eleUtil.doSendKeys(this.lastName, lastName, TimeUtil.MEDIUM_TIME_OUT);
         eleUtil.doSendKeys(this.email, email, TimeUtil.MEDIUM_TIME_OUT);
         eleUtil.doSendKeys(this.telephone, telephone, TimeUtil.MEDIUM_TIME_OUT);
