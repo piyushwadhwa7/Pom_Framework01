@@ -2,9 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Opencart App Test Sanity suit" verbose="4" parallel="tests" thread-count="3" >
+    <listeners>
+        <listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
+    </listeners>
     // Block number 1
     <test name="Registration Page Test">
-        <parameter name="browser" value="chrome" />//This is environment data ( Always use DataProviders
+        <parameter name="browser" value="firefox" />//This is environment data ( Always use DataProviders
         <!--        <parameter name="url" value="https://www.jiocinema.com/" />-->
         <classes>
             <class name="com.qa.opencart.MyTests.RegistrationPageTest" />
