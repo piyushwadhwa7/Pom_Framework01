@@ -28,7 +28,7 @@ public class BaseTests {
         if(browserName!=null){
             prop.setProperty("browser", browserName);
         }
-        driver=df.intiDriver(prop);
+        driver=df.intiDriver(prop);// Now the driver is ThreadLocal driver
         loginPage = new LoginPage(driver);
         softAssert = new SoftAssert();
     }
