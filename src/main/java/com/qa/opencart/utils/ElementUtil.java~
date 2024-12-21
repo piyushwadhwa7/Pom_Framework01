@@ -1,12 +1,14 @@
 package com.qa.opencart.utils;
 
 import com.qa.opencart.exceptions.ElementException;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ElementUtil {
@@ -350,7 +352,7 @@ public class ElementUtil {
         try {
             return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
         }catch (Exception e) {
-            return List.of();// return empty array list if element is not found
+            return Arrays.asList(new WebElement[0]);// return empty array list if element is not found
         }
 
     }
@@ -417,7 +419,7 @@ public class ElementUtil {
         }
         return driver.getTitle();
     }
-
+    @Step("Waiting  for title to be and capture the title")
     public String waitForTitleToBe(String titleVal, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 

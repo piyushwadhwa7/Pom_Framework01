@@ -38,7 +38,7 @@ public class DriverManager {
             switch (browserName.trim().toLowerCase()) {
                 case "chrome":
                     //driver = new ChromeDriver();
-                    tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+                    tlDriver.set(new ChromeDriver());
                     break;
                 case "firefox":
                     //driver = new FirefoxDriver();

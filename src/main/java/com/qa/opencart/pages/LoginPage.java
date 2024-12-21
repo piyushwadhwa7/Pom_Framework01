@@ -3,6 +3,7 @@ package com.qa.opencart.pages;
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
 import com.qa.opencart.utils.TimeUtil;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -23,6 +24,7 @@ public class LoginPage {
     }
 
     //3. page actions
+    @Step("Get login page title")
     public String getLoginPageTitle() {
         String title = eleUtil.waitForTitleToBe(AppConstants.LOGIN_PAGE_TITLE, TimeUtil.DEFAULT_TIME_OUT);
         System.out.println("Login page title is : " + title);
@@ -42,6 +44,7 @@ public class LoginPage {
        return eleUtil.doIsDisplayed(forgottenPassword);
 
     }
+    @Step("Login to application with userName:{0} and password: {1}")
     public AccountsPage doLogin(String un, String pwd) throws InterruptedException {
         eleUtil.doSendKeys(emailId, un, TimeUtil.MEDIUM_TIME_OUT);
         eleUtil.doSendKeys(password, pwd, TimeUtil.MEDIUM_TIME_OUT);
@@ -51,7 +54,7 @@ public class LoginPage {
         // This is also termed as page chaining concept
 
     }
-
+    @Step("Navigate to registration page")
     public RegistrationPage navigateToResgistrationPage() {
         eleUtil.doClick(registerBtn, TimeUtil.MEDIUM_TIME_OUT);
         return new RegistrationPage(driver);

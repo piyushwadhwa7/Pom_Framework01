@@ -4,6 +4,9 @@
 <suite name="Opencart App Test Sanity suit" verbose="4" parallel="tests" thread-count="3" >
     <listeners>
         <listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
+        <listener class-name="com.qa.opencart.listeners.TestAllureListener"/>
+        <listener class-name="com.qa.opencart.listeners.AnnotationTransformer">
+        </listener>
     </listeners>
     // Block number 1
     <test name="Login Page Test">
@@ -15,34 +18,34 @@
     </test>
 
 
-    // Block number 2
-    <test name="Account Page Test">
-        <parameter name="browser" value="firefox" />
-<!--        <parameter name="url"-->
-<!--                   value="https://naveenautomationlabs.com/opencart/index.php?route=account/login" />-->
-        <classes>
-            <class name="com.qa.opencart.MyTests.AccountsPageTest" />
-        </classes>
+<!--    // Block number 2-->
+<!--    <test name="Account Page Test">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--&lt;!&ndash;        <parameter name="url"&ndash;&gt;-->
+<!--&lt;!&ndash;                   value="https://naveenautomationlabs.com/opencart/index.php?route=account/login" />&ndash;&gt;-->
+<!--        <classes>-->
+<!--            <class name="com.qa.opencart.MyTests.AccountsPageTest" />-->
+<!--        </classes>-->
 
-    </test>
+<!--    </test>-->
 
 
-    //  Block number 3
-    <test name="ProductInfoPage Test">
-        <parameter name="browser" value="edge" />
-<!--        <parameter name="url"-->
-<!--                   value="https://www.freecodecamp.org/news/api-testing-with-postman-a-step-by-step-guide-using-the-spotify-api/" />-->
-        <classes>
-            <class name="com.qa.opencart.MyTests.ProductInfoPageTest" />
-        </classes>
-    </test>
+<!--    //  Block number 3-->
+<!--    <test name="ProductInfoPage Test">-->
+<!--        <parameter name="browser" value="edge" />-->
+<!--&lt;!&ndash;        <parameter name="url"&ndash;&gt;-->
+<!--&lt;!&ndash;                   value="https://www.freecodecamp.org/news/api-testing-with-postman-a-step-by-step-guide-using-the-spotify-api/" />&ndash;&gt;-->
+<!--        <classes>-->
+<!--            <class name="com.qa.opencart.MyTests.ProductInfoPageTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Registration Page Test">
-        <parameter name="browser" value="chrome" />//This is environment data ( Always use DataProviders
-        <!--        <parameter name="url" value="https://www.jiocinema.com/" />-->
-        <classes>
-            <class name="com.qa.opencart.MyTests.RegistrationPageTest" />
-        </classes>
-    </test>
+<!--    <test name="Registration Page Test">-->
+<!--        <parameter name="browser" value="chrome" />//This is environment data ( Always use DataProviders-->
+<!--        &lt;!&ndash;        <parameter name="url" value="https://www.jiocinema.com/" />&ndash;&gt;-->
+<!--        <classes>-->
+<!--            <class name="com.qa.opencart.MyTests.RegistrationPageTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

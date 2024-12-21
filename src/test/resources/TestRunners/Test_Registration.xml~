@@ -4,8 +4,7 @@
 <suite name="Opencart App Test Sanity suit" verbose="4" parallel="tests" thread-count="3" >
     <listeners>
         <listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
-        <listener class-name="com.qa.opencart.listeners.TestAllureListener"/>
-        <listener class-name="com.qa.opencart.listeners.AnnotationTransformer">
+        <listener class-name="com.qa.opencart.listeners.TestAllureListener">
         </listener>
     </listeners>
     // Block number 1
