@@ -1,6 +1,7 @@
 package com.qa.opencart.utils;
 
 import com.qa.opencart.exceptions.ElementException;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -26,7 +27,7 @@ public class ElementUtil {
     }
 
     /**
-     *
+     *This is a good example for method overloading
      * @param locator
      * @param value
      */
@@ -418,7 +419,7 @@ public class ElementUtil {
         }
         return driver.getTitle();
     }
-
+    @Step("Waiting  for title to be and capture the title")
     public String waitForTitleToBe(String titleVal, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 

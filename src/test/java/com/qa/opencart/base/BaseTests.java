@@ -1,6 +1,8 @@
 package com.qa.opencart.base;
 import com.qa.opencart.factory.DriverManager;
 import com.qa.opencart.pages.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -20,6 +22,7 @@ public class BaseTests {
     protected SoftAssert softAssert;// This is excess modfier where we can use the child methods in another classes which have inherited it
     protected RegistrationPage regPage;
 
+    @Step("Steup for the test, initialize the browser: {0}")
     @Parameters({"browser"})
     @BeforeTest
     public void setup(String browserName) {
@@ -32,7 +35,7 @@ public class BaseTests {
         loginPage = new LoginPage(driver);
         softAssert = new SoftAssert();
     }
-
+    @Step("Close the browser")
     @AfterTest
     public void tearDown() {
         driver.quit();
