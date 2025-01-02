@@ -12,6 +12,10 @@ target/
 *.iml
 *.ipr
 
+# Ignore backup files
+*~
+
+
 ### Eclipse ###
 .apt_generated
 .classpath
