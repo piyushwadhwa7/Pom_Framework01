@@ -22,7 +22,7 @@ public class BaseTests {
 
     @Step("Steup for the test, initialize the browser: {0}")
     @Parameters({"browser"})
-    @BeforeClass
+    @BeforeTest
     public void setup(@Optional("chrome")String browserName) {
         df = new DriverManager();
         prop=df.initProp();
