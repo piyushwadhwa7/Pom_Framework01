@@ -4,10 +4,7 @@ import com.qa.opencart.pages.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.util.Properties;
@@ -25,7 +22,7 @@ public class BaseTests {
 
     @Step("Steup for the test, initialize the browser: {0}")
     @Parameters({"browser"})
-    @BeforeTest
+    @BeforeClass
     public void setup(@Optional("chrome")String browserName) {
         df = new DriverManager();
         prop=df.initProp();
