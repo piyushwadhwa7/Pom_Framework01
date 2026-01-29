@@ -10,33 +10,43 @@ import org.testng.asserts.SoftAssert;
 import java.util.Properties;
 
 public class BaseTests {
-    DriverManager df;
-    WebDriver driver;
-    protected Properties prop;
-    protected LoginPage loginPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
-    protected AccountsPage accountsPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
-    protected SearchResultPage searchResPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
-    protected ProductInfoPage productInfoPage;// This is excess modfier where we can use the child methods in another classes which have inherited it
-    protected SoftAssert softAssert;// This is excess modfier where we can use the child methods in another classes which have inherited it
-    protected RegistrationPage regPage;
+    protected static DriverManager df;
+    protected static Properties prop;
 
-    @Step("Steup for the test, initialize the browser: {0}")
-    @Parameters({"browser"})
-    @BeforeTest
-    public void setup(@Optional("chrome")String browserName) {
+    protected WebDriver driver;
+
+    protected LoginPage loginPage;
+    protected AccountsPage accountsPage;
+    protected SearchResultPage searchResPage;
+    protected ProductInfoPage productInfoPage;
+    protected RegistrationPage regPage;
+    protected SoftAssert softAssert;
+
+    @BeforeSuite(alwaysRun = true)
+    public void suiteSetup() {
         df = new DriverManager();
-        prop=df.initProp();
-        if(browserName!=null){
+        prop = df.initProp();   // ONLY ONCE for entire JVM
+    }
+
+    @Parameters({"browser"})
+    @BeforeClass(alwaysRun = true)
+    public void classSetup(@Optional("chrome") String browserName) {
+
+        if (browserName != null) {
             prop.setProperty("browser", browserName);
         }
-        driver=df.intiDriver(prop);// Now the driver is ThreadLocal driver
+
+        driver = df.intiDriver(prop);  // ThreadLocal driver inside
+
         loginPage = new LoginPage(driver);
         softAssert = new SoftAssert();
     }
-    @Step("Close the browser")
-    @AfterTest
+
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
 }
