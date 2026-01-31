@@ -1,6 +1,7 @@
 package com.qa.opencart.base;
 import com.qa.opencart.factory.DriverManager;
 import com.qa.opencart.pages.*;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +28,17 @@ public class BaseTests {
         df = new DriverManager();
         prop = df.initProp();   // ONLY ONCE for entire JVM
     }
+    private void addAllureEnvironmentLabels() {
+
+        String browser = prop.getProperty("browser");
+        String env = prop.getProperty("env");          // from config.properties
+        String os = System.getProperty("os.name");
+
+        Allure.label("browser", browser);
+        Allure.label("env", env);
+        Allure.label("os", os);
+    }
+
 
     @Parameters({"browser"})
     @BeforeClass(alwaysRun = true)
@@ -37,6 +49,7 @@ public class BaseTests {
         }
 
         driver = df.intiDriver(prop);  // ThreadLocal driver inside
+        addAllureEnvironmentLabels();
 
         loginPage = new LoginPage(driver);
         softAssert = new SoftAssert();
