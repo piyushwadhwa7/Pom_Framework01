@@ -1,4 +1,5 @@
 package com.qa.opencart.listeners;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -6,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import io.qameta.allure.Allure;
+
 
 import com.qa.opencart.factory.DriverManager;
 
@@ -14,8 +17,6 @@ public class TestAllureListener implements ITestListener {
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
-
-
     // Text attachments for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
     public byte[] saveScreenshotPNG(WebDriver driver) {
@@ -48,6 +49,17 @@ public class TestAllureListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("I am in onTestStart method " + getTestMethodName(iTestResult) + " start");
+        String className = iTestResult.getTestClass().getName();
+        String methodName = iTestResult.getMethod().getMethodName();
+
+        String uniqueId = className + "." + methodName;
+
+        Allure.getLifecycle().updateTestCase(tc -> {
+            tc.setHistoryId(uniqueId);     // for trend
+            tc.setTestCaseId(uniqueId);   // REQUIRED for Allure v3 history
+        });
+
+        System.out.println("History + TestCaseId set for: " + uniqueId);
     }
 
     @Override

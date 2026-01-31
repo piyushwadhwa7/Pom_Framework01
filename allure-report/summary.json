@@ -1,0 +1,1 @@
+{"name":"OpenCart Automation Report","stats":{"total":23,"passed":22,"retries":1,"failed":1},"status":"failed","duration":36912,"createdAt":1769882258779,"plugin":"Awesome","newTests":[],"flakyTests":[],"retryTests":[],"meta":{"reportId":"1709b2be-ed1a-431b-a4d2-46ca4e18496d","singleFile":false,"withTestResultsLinks":true},"pullRequestHref":"","jobHref":""}
